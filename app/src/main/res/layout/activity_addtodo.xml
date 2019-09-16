@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E2E2E2"
+        tools:context=".ui.addtodo.AddToDoActivity">
+
+
+        <RelativeLayout
+            android:id="@+id/activity_add_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/textBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:background="@color/colorPrimary"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_alignParentStart="true">
+
+                <ImageView
+                   android:layout_centerVertical="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:contentDescription="@string/space"
+                    android:onClick="@{viewmodel::onClose}"
+                    android:src="@drawable/ic_close_white"
+                    android:visibility="visible" />
+
+
+
+
+                <TextView
+                    android:foregroundGravity="center"
+                    android:layout_gravity="center"
+                    android:id="@+id/page_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:ems="10"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/page_add_to_do"
+                    android:textColor="#FFFFFF"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_centerVertical="true"
+
+                    android:layout_gravity="center"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:contentDescription="@string/space"
+                    android:onClick="@{viewmodel::onSave}"
+                    android:src="@drawable/ic_save_white"
+                    android:visibility="invisible"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textBar"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/index_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/index_2"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription="@string/space"
+                        android:src="@drawable/label" />
+
+                    <Spinner
+                        android:id="@+id/spinner_roster"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal" />
+                    <!---
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Categorie"
+                        android:gravity="center_horizontal"
+                        android:onClick="setColor"
+                        android:textSize="20dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:id="@+id/categoriColor" />
+                        -->
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/index_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/toolbar_index_1"
+                    android:orientation="horizontal"
+                    android:padding="4dp"
+                    android:weightSum="100">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/space"
+                        android:src="@drawable/clock" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="4dp">
+
+                        <EditText
+                            android:id="@+id/todo_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".2"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:gravity="center"
+                            android:importantForAutofill="no"
+                            android:inputType="text"
+                            android:text="@={viewmodel.TodoDate}"
+                            android:textIsSelectable="false"
+                            android:textSize="20sp" />
+
+                        <EditText
+                            android:id="@+id/todo_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".3"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:gravity="center"
+                            android:importantForAutofill="no"
+                            android:inputType="text"
+                            android:text="@={viewmodel.TodoTime}"
+                            android:textIsSelectable="false"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:gravity="center"
+                            android:padding="4dp"
+                            android:text="\@"
+                            android:textColor="?attr/colorAccent"
+                            tools:ignore="HardcodedText" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/index_3">
+
+                    <EditText
+                        android:id="@+id/txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:ems="10"
+                        android:hint="@string/hint_to_do_decription"
+                        android:importantForAutofill="no"
+                        android:inputType="textMultiLine"
+                        android:text="@={viewmodel.TodoDescription}" />
+
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_alignParentTop="true"
+                    android:id="@+id/toolbar_index_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorGray"
+                        android:ems="10"
+                        android:hint="@string/hint_title"
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:text="@={viewmodel.TodoTitle}"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
+
+
+            </RelativeLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/save_btn"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom|start"
+                android:layout_margin="@dimen/fab_margin"
+                android:contentDescription="@string/space"
+                android:onClick="@{viewmodel::onSave}"
+                app:srcCompat="@drawable/ic_save_white" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/delete_btn"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/space"
+                android:onClick="@{viewmodel::onDelete}"
+                android:visibility="@{viewmodel.IsActiveDelete}"
+
+                app:srcCompat="@drawable/ic_delete_white" />
+        </RelativeLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.aeyacin.todolist.ui.addtodo.AddToDoViewModel" />
+
+    </data>
+
+
+</layout>

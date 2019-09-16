@@ -1,0 +1,176 @@
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/left_drawer"
+    android:layout_width="200dp"
+    android:layout_height="fill_parent"
+    android:layout_gravity="start|left"
+    android:background="#FFFFFF"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="RtlHardcoded">
+
+    <RelativeLayout
+        android:id="@+id/top2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/filter"
+            android:textAlignment="gravity"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:onClick="closeMenu"
+            android:padding="10dp"
+            android:src="@drawable/close"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@string/hide" />
+    </RelativeLayout>
+
+
+    <SearchView
+        android:id="@+id/filter_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:background="#EFEFEF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="2dp"
+        android:paddingStart="2dp"
+        tools:ignore="RtlSymmetry">
+
+        <ImageView
+            android:id="@+id/doneT"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/donetask"
+            android:contentDescription="@string/space" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:padding="10dp"
+            android:text="@string/status"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+
+
+    <CheckBox
+        android:id="@+id/check_done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/done" />
+
+    <CheckBox
+        android:id="@+id/check_todo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/to_do" />
+
+    <CheckBox
+        android:id="@+id/check_expired"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/expired" />
+<!--
+    <LinearLayout
+        android:background="#EFEFEF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="2dp"
+        android:paddingStart="2dp"
+        tools:ignore="RtlSymmetry">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_date_range_black_24dp"
+            android:contentDescription="@string/space" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:padding="10dp"
+            android:text="@string/date"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+
+    <CheckBox
+        android:id="@+id/switch_passed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/passed" />
+
+    <CheckBox
+        android:id="@+id/switch_ondate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/up_to_date" />
+    -->
+    <LinearLayout
+        android:background="#EFEFEF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="2dp"
+        android:paddingStart="2dp"
+        tools:ignore="RtlSymmetry">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/label"
+            android:contentDescription="@string/space" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="addCategory"
+            android:padding="10dp"
+            android:text="@string/categories"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:onClick="addCategory"
+            android:src="@drawable/ic_add_list_gray"
+            android:contentDescription="@string/space" />
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/checkCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+
+    </ListView>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#DFDFDF" />
+</LinearLayout>

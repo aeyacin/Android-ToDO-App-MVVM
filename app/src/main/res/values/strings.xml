@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">ToDo List</string>
+    <string name="title_activity_signup">SignupActivity</string>
+    <string name="hint_name_surname">Name Surname</string>
+    <string name="hint_username_mail">username@mail.com</string>
+    <string name="hint_password">password</string>
+    <string name="hint_confirm_password">confirm password</string>
+    <string name="login_description">Aeyacin MVVM ToDo List Example</string>
+    <string name="hint_sign_up">Sign Up</string>
+    <string name="login_signup_here">Sign in Here</string>
+    <string name="sign_in">Sign In</string>
+    <string name="signup_here">Sign Up Here</string>
+    <string name="name_is_required">Name is required</string>
+    <string name="mail_is_required">Email is required</string>
+    <string name="please_enter_pass">Please enter a password</string>
+    <string name="password_not_match">Password did not match</string>
+    <string name="invalid_email_or_pass">Invalid email or password</string>
+    <string name="logout">Logout</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+    <string name="menu_list">menu_list</string>
+    <string name="status">Status</string>
+    <string name="filter">Filter</string>
+    <string name="done">Done</string>
+    <string name="to_do">To do</string>
+    <string name="hide">hide</string>
+    <string name="space" />
+    <string name="categories">Todo List</string>
+    <string name="hint_title">Title</string>
+    <string name="hint_to_do_decription">To do...</string>
+    <string name="page_add_to_do">Add To Do</string>
+    <string name="dialog_select">Seç</string>
+    <string name="dialog_cancel">İptal</string>
+    <string name="action_sort_name">Name</string>
+    <string name="action_sort_status">Status</string>
+    <string name="action_sort_deadline">Deadline</string>
+    <string name="action_sort_create_date">Create Date</string>
+    <string name="expired">Expired</string>
+    <string name="delete">delete</string>
+    <string name="add_todo_list">Add Roster...</string>
+    <string name="message_not_delete_category_none">Error can\'t delete \"none\" category</string>
+</resources>
