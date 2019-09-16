@@ -187,8 +187,9 @@ public class TodoListFragment extends BaseFragment {
             }
         }
 
-        RefreshData(false);
         listData = filteredData;
+        RefreshData(false);
+
 
     }
 

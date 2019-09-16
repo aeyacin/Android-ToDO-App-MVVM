@@ -17,6 +17,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -115,20 +116,35 @@ public class HomeActivity extends BaseActivity implements TodoListFragment.OnToD
             }
         });
         setRosterCheckedList();
-        drawerLayout.setOnDragListener(new View.OnDragListener() {
+
+        drawerLayout.setDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+
+            }
 
             @Override
-            public boolean onDrag(View v, DragEvent event) {
-                if (DragEvent.ACTION_DRAG_EXITED == event.getAction())
-                    setFilter();
-                return false;
+            public void onDrawerOpened(@NonNull View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerClosed(@NonNull View drawerView) {
+                setFilter();
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
             }
         });
+
 
     }
 
     private void setRosterCheckedList() {
         rosterDataList = repository.getTodoRosterList();
+        filterObject.rosterCount = rosterDataList.size();
         CheckRosterAdapter checkRosterAdapter = new CheckRosterAdapter(HomeActivity.this, rosterDataList);
         rosterListView.setAdapter(checkRosterAdapter);
 
@@ -140,12 +156,14 @@ public class HomeActivity extends BaseActivity implements TodoListFragment.OnToD
     }
 
 
-
     @Override
     public void onToDoListFragmentInteraction(ToDo item, ToDoStatus status) {
         switch (status) {
             case COMPLETE:
-//update set Complete
+                //update set Complete
+                item.setStatus(ToDoStatus.COMPLETE.toString());
+                repository.updateTodo(item);
+                RefreshData();
                 break;
             case EDIT:
                 Intent intent = new Intent(HomeActivity.this, AddToDoActivity.class);
@@ -153,7 +171,10 @@ public class HomeActivity extends BaseActivity implements TodoListFragment.OnToD
                 startActivityForResult(intent, RequestCode);
                 break;
             case EXPIRED:
-//Update set Expired
+                //Update set Expired
+                item.setStatus(ToDoStatus.COMPLETE.toString());
+                item.setDeadLine(new Date().getTime() - 1);
+                repository.updateTodo(item);
                 break;
             default:
                 break;
@@ -189,13 +210,13 @@ public class HomeActivity extends BaseActivity implements TodoListFragment.OnToD
      */
     private void RefreshData() {
         todoListFragment.RefreshData(true);
-        rosterDataList = repository.getTodoRosterList();
-        ((CheckRosterAdapter) rosterListView.getAdapter()).notifyDataSetChanged();
+
     }
 
 
     private void setFilter() {
 
+        filterObject.rosterList.clear();
         for (ToDoRoster item : rosterDataList) {
             if (item.isShow())
                 filterObject.rosterList.add(item.getId());
@@ -204,7 +225,6 @@ public class HomeActivity extends BaseActivity implements TodoListFragment.OnToD
         filterObject.Expired = ((CheckBox) findViewById(R.id.check_expired)).isChecked();
         filterObject.Todo = ((CheckBox) findViewById(R.id.check_todo)).isChecked();
         filterObject.Done = ((CheckBox) findViewById(R.id.check_done)).isChecked();
-
 
         todoListFragment.setFilter(filterObject);
     }
@@ -314,6 +334,8 @@ public class HomeActivity extends BaseActivity implements TodoListFragment.OnToD
                     toDoRoster.setCreateDate(new Date().getTime());
                     repository.addTodoRoster(toDoRoster);
                     RefreshData();
+                    setRosterCheckedList();
+                    closeMenu(view);
                     dialog.dismiss();
                 } else {
                     Toast.makeText(getApplicationContext(), "Error: Category " + name + " already exists", Toast.LENGTH_SHORT).show();
@@ -334,7 +356,6 @@ public class HomeActivity extends BaseActivity implements TodoListFragment.OnToD
                     finalColor = color;
                 else
                     finalColor = Color.parseColor("#262D3B");
-                //((View) findViewById(R.id.color)).setBackgroundColor(color);
                 dialog.findViewById(R.id.color).setBackgroundColor(finalColor);
             }
 
@@ -350,6 +371,7 @@ public class HomeActivity extends BaseActivity implements TodoListFragment.OnToD
         if (!rosterDataList.get(position).getName().equalsIgnoreCase("none")) {
             repository.deleteTodoRoster(rosterDataList.get(position));
             repository.setAutoRoster();
+            setRosterCheckedList();
             RefreshData();
         } else
             Toast.makeText(getApplicationContext(), getString(R.string.message_not_delete_category_none), Toast.LENGTH_SHORT).show();

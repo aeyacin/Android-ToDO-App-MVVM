@@ -86,6 +86,7 @@ public class ToDoRepository {
             return result;
         ToDoRoster toDoRoster = new ToDoRoster();
         toDoRoster.setName("None");
+        toDoRoster.setShow(true);
         toDoRoster.setUserId(ToDoApplication.getSession().getUserId());
         db.getRosterDao().add(toDoRoster);
 

@@ -71,18 +71,21 @@
 
 
     <CheckBox
+        android:checked="true"
         android:id="@+id/check_done"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/done" />
 
     <CheckBox
+        android:checked="true"
         android:id="@+id/check_todo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/to_do" />
 
     <CheckBox
+        android:checked="true"
         android:id="@+id/check_expired"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

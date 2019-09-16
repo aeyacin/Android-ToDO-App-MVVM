@@ -142,12 +142,18 @@ public class AddToDoActivity extends BaseActivity implements ActivityListener {
     public void AddSpinnerData() {
         categoriList = mViewModel.getRosterList();
         List<String> categoryNames = new ArrayList<>();
+        int position = 0;
         for (int i = 0; i < categoriList.size(); i++) {
             categoryNames.add(categoriList.get(i).getName());
+            if (mViewModel.RosterID.getValue() != null && mViewModel.RosterID.getValue() > 0 && mViewModel.RosterID.getValue() == categoriList.get(i).getId())
+                position = i;
         }
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categoryNames);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner.setAdapter(dataAdapter);
+
+        categorySpinner.setSelection(position);
         categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -161,7 +167,7 @@ public class AddToDoActivity extends BaseActivity implements ActivityListener {
             }
 
         });
-        categorySpinner.setAdapter(dataAdapter);
+
     }
 
     @Override
