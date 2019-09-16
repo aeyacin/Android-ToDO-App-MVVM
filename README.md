@@ -22,7 +22,7 @@ In general, the steps necessary to build the APK file:
 * Install and setup Android Studio.
 * Use git to clone the source code from the central Github repository where the developers have put the actual code for the app.
 * Open the cloned project in Android Studio as active project.
-* Build the signed APK.
+* Build and running app.
 * Transfer the signed APK to your smartphone.
 
 ## Download code and additional components
