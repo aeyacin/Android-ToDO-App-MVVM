@@ -52,14 +52,14 @@ Please click "Don't remind me again for this project".
  
  App Screenshots
  
-  ![Screenshot 02_01](./screenshot/Screenshot_02_01.png)
-  ![Screenshot 02_02](./screenshot/Screenshot_02_02.png)
-  ![Screenshot 02_03](./screenshot/Screenshot_02_03.png)
-  ![Screenshot 02_04](./screenshot/Screenshot_02_04.png)
-  ![Screenshot 02_05](./screenshot/Screenshot_02_05.png)
-  ![Screenshot 02_06](./screenshot/Screenshot_02_06.png)  
-  ![Screenshot 02_07](./screenshot/Screenshot_02_07.png)
-  ![Screenshot 02_08](./screenshot/Screenshot_02_08.png)
+  ![Screenshot 02_01](./screenshot/Screenshot_2_01.png)
+  ![Screenshot 02_02](./screenshot/Screenshot_2_02.png)
+  ![Screenshot 02_03](./screenshot/Screenshot_2_03.png)
+  ![Screenshot 02_04](./screenshot/Screenshot_2_04.png)
+  ![Screenshot 02_05](./screenshot/Screenshot_2_05.png)
+  ![Screenshot 02_06](./screenshot/Screenshot_2_06.png)  
+  ![Screenshot 02_07](./screenshot/Screenshot_2_07.png)
+  ![Screenshot 02_08](./screenshot/Screenshot_2_08.png)
 
 
 
