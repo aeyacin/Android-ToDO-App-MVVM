@@ -32,9 +32,15 @@ Use git clone in Android Studio as shown in screenshots below. Select "Check out
 Finish the checkout from version control with opening the project by clicking "Yes".
 ![Screenshot 2](./screenshot/Screenshot_02.png)
 
+Open Anroid Stuio and project. Click build and Run. Wait
+
+![Screenshot 3](./screenshot/Screenshot_03.png)
+
+
 Android Studio recommends to update the gradle system. Never update gradle! Because tire you!
 Please click "Don't remind me again for this project".
-![Screenshot 3](./screenshot/NoGradleUpdate.png)
+
+![Screenshot nupdate](./screenshot/NoGradleUpdate.png)
 
 
 
