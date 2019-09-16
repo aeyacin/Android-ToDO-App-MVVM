@@ -19,8 +19,8 @@ import static org.junit.Assert.*;
 
 public class HomeActivityTest extends BaseActivity {
     AppDatabase db;
-
     User user;
+
 
     public HomeActivityTest() {
         user = new User();
@@ -31,6 +31,7 @@ public class HomeActivityTest extends BaseActivity {
     }
 
     @Override
+    @Test
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = AppDatabase.getDatabase(this.getApplication());
@@ -38,12 +39,14 @@ public class HomeActivityTest extends BaseActivity {
     }
 
     @Before
+    @Test
     public void setUp() throws Exception {
 
         db.getUserDao().upsert(user);
     }
 
     @After
+    @Test
     public void tearDown() throws Exception {
         LiveData<User> liveUser = db.getUserDao().getUser(user.getUserName(), user.getPassword());
 
