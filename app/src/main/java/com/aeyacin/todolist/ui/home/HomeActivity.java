@@ -17,6 +17,8 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.PopupMenu;
@@ -38,6 +40,7 @@ import com.aeyacin.todolist.ui.base.BaseActivity;
 import com.aeyacin.todolist.ui.home.todolist.CheckRosterAdapter;
 import com.aeyacin.todolist.ui.home.todolist.TodoListFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.thebluealliance.spectrum.SpectrumDialog;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -46,6 +49,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import petrov.kristiyan.colorpicker.ColorPicker;
+
+import static java.security.AccessController.getContext;
 
 public class HomeActivity extends BaseActivity implements TodoListFragment.OnToDoListFragmentInteractionListener {
 
@@ -347,23 +352,25 @@ public class HomeActivity extends BaseActivity implements TodoListFragment.OnToD
 
 
     private void setCategoryColor(View v, final Dialog dialog) {
-        ColorPicker colorPicker = new ColorPicker(this);
-        colorPicker.show();
-        colorPicker.setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
-            @Override
-            public void onChooseColor(int position, int color) {
-                if (color != 0)
-                    finalColor = color;
-                else
-                    finalColor = Color.parseColor("#262D3B");
-                dialog.findViewById(R.id.color).setBackgroundColor(finalColor);
-            }
 
-            @Override
-            public void onCancel() {
-                //here goes nothing
-            }
-        });
+        new SpectrumDialog.Builder(getApplicationContext())
+                .setColors(R.array.demo_colors)
+                .setSelectedColorRes(R.color.color1)
+                .setDismissOnColorSelected(true)
+                .setOutlineWidth(2)
+                .setOnColorSelectedListener((positiveResult, color) -> {
+                    if (positiveResult) {
+                        if (color != 0)
+                            finalColor = color;
+                        else
+                            finalColor = Color.parseColor("#262D3B");
+                        dialog.findViewById(R.id.color).setBackgroundColor(finalColor);
+                    } else {
+                        //here goes nothing
+
+                    }
+                }).build().show(getSupportFragmentManager(), "color_picker_dialog");
+
     }
 
     public void deleteRoster(View v) {

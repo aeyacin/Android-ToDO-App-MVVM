@@ -17,7 +17,6 @@ public class ToDoTest {
 
     @Test
     public void getName() {
-
         assertEquals(toDo.getName(), Name);
     }
 
